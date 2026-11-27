@@ -31,8 +31,14 @@ On macOS or Linux, activate the environment with `source .venv/bin/activate` ins
 Start Streamlit from the project root:
 
 ```powershell
+$env:OPENBLAS_NUM_THREADS = "1"
+$env:OMP_NUM_THREADS = "1"
+$env:MKL_NUM_THREADS = "1"
+$env:NUMEXPR_NUM_THREADS = "1"
 streamlit run app.py
 ```
+
+The Movies theme loops the full supplied movie clip from `static/movie-world-full.mp4`. The Books theme uses the separate full book clip at `static/book-world.mp4`. Both background videos have their corner Gemini mark cleaned up. Keep `.streamlit/config.toml` and the `static/` folder alongside `app.py` so Streamlit can serve both videos.
 
 Streamlit will print a local URL and usually open it in your browser. Do not start the interface with `python app.py`; Streamlit apps need to be launched with `streamlit run`.
 
